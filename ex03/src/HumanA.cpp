@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Weapon.cpp                                         :+:      :+:    :+:   */
+/*   HumanA.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: enetxeba <enetxeba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: endika <endika@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/04 14:04:55 by enetxeba          #+#    #+#             */
-/*   Updated: 2025/06/04 14:35:03 by enetxeba         ###   ########.fr       */
+/*   Created: 2025/06/05 08:35:33 by endika            #+#    #+#             */
+/*   Updated: 2025/06/05 10:31:29 by endika           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Weapon.hpp"
+#include "HumanA.hpp"
 
-Weapon::Weapon(std::string weapon) : _weapon(weapon){}
-
-std::string Weapon::getType ()
+HumanA::HumanA (std::string name, Weapon& weapon) : _name(name), _weapon(weapon)
 {
-    return _weapon;
+}
+HumanA::~HumanA()
+{
+    
 }
 
-void Weapon::setType(std::string weapon) 
+void HumanA::attack()
 {
-    _weapon = weapon;
+    std::cout << _name << " attacks with their " << _weapon.getType() << std::endl;
 }

@@ -1,6 +1,6 @@
 CC = g++
-FLAGS = -Wextra -Werror -Wall -std=c++98
-SRC = src/main.cpp src/Weapon.cpp
+FLAGS = -Wextra -Werror -Wall -std=c++98 -pedantic
+SRC = src/main.cpp src/Weapon.cpp src/HumanA.cpp src/HumanB.cpp
 INCLUDE = -I include 
 NAME = ex02
 OBJ = $(SRC:.cpp=.o)

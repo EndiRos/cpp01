@@ -1,22 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   HumanA.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: enetxeba <enetxeba@student.42.fr>          +#+  +:+       +#+        */
+/*   By: endika <endika@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/04 14:10:55 by enetxeba          #+#    #+#             */
-/*   Updated: 2025/06/04 14:36:07 by enetxeba         ###   ########.fr       */
+/*   Created: 2025/06/05 08:25:18 by endika            #+#    #+#             */
+/*   Updated: 2025/06/05 10:33:56 by endika           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef HUMANA_HPP
+#define HUMANA_HPP
+
 #include "Weapon.hpp"
 
-int main(int argv, char  **argc)
+class HumanA
 {
-    (void) argv;
-    (void) argc;
-    Weapon arm = Weapon("pistola colt");
-    arm.setType("Pistola");
-    std::cout << arm.getType() << std::endl;
-}
+    public:
+        
+        HumanA(std::string name, Weapon &weapon);
+        void attack();
+        ~HumanA();
+
+    private :
+        std::string _name;
+        Weapon      &_weapon;
+};
+
+#endif
