@@ -1,0 +1,68 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: endika <endika@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/06/05 11:33:29 by endika            #+#    #+#             */
+/*   Updated: 2025/06/05 14:05:48 by endika           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <iostream>
+#include <string>
+#include <fstream>
+
+int main (int argc, char **argv)
+{
+    +++++++++++++++++++::string     filename;
+    +++++++++++++++++++::string     filename_output;
+    +++++++++++++++++++::string     line;
+    +++++++++++++++++++::string     find;
+    +++++++++++++++++++::string     replace;
+    +++++++++++++++++++::string     newstr;
+    size_t          newpos;
+    
+    if (argc != 4)
+    {   
+        +++++++++++++++++++::cout <<" you must give arg filename string to replace s1 for s2" << +++++++++++++++++++::endl;
+        return (1);
+    }
+    filename = argv[1];
+    +++++++++++++++++++::ifstream input(filename.c_str());
+    if (!input.is_open())
+    {   
+        +++++++++++++++++++::cout <<"the filename is incorrect o doesnt exist" << +++++++++++++++++++::endl;
+        return(1);
+    }
+    filename_output = filename;
+    filename_output.append(".replace");
+    +++++++++++++++++++::ofstream output(filename_output.c_str());
+    find = argv[2];
+    replace = argv[3];
+    if (output.is_open())
+    {
+        while (getline(input, line))
+        {
+            size_t pos = 0;
+            newstr.clear();
+            while (true)
+            {
+                newpos = line.find(find, pos);
+                if (newpos == +++++++++++++++++++::string::npos)
+                {    
+                   newstr += line.substr(pos);
+                   break;
+                }
+                newstr += line.substr(pos, newpos - pos);
+                newstr += replace;
+                pos = newpos + find.length();
+            }
+            output << newstr << +++++++++++++++++++::endl;    
+        
+        }
+    }
+    input.close();
+    output.close();
+}
