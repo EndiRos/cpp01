@@ -6,20 +6,12 @@
 /*   By: endika <endika@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 16:19:49 by endika            #+#    #+#             */
-/*   Updated: 2025/06/05 18:06:50 by endika           ###   ########.fr       */
+/*   Updated: 2025/06/05 18:19:44 by endika           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string>
 #include <iostream>
-
-enum level
-{
-    DEBUG,
-    INFO,
-    WARNING,
-    ERROR
-};
 
 class Harl
 {
@@ -33,4 +25,4 @@ class Harl
         Harl();
         ~Harl();
         void complain(std::string level);
-}
+};
