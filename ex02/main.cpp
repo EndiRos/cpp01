@@ -6,7 +6,7 @@
 /*   By: endika <endika@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 10:49:08 by endika            #+#    #+#             */
-/*   Updated: 2025/06/05 11:16:34 by endika           ###   ########.fr       */
+/*   Updated: 2025/06/05 11:28:08 by endika           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,13 @@
 
 int main (int argc, char **argv)
 {
+    (void)argc;
+    (void)argv;
     std::string str;
     std::string *stringPTR = &str;
     std::string &stringREF = str;
     
-
+    
     str = "HI THIS IS BRAIN";
     std::cout << "The memory address of the string variable " << &str << std::endl;
     std::cout << "The memory address held by stringPTR." << stringPTR << std::endl;
