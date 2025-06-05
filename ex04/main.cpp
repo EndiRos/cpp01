@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: endika <endika@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/05 11:33:29 by endika            #+#    #+#             */
-/*   Updated: 2025/06/05 14:05:48 by endika           ###   ########.fr       */
+/*   Created: 2025/06/05 14:13:10 by endika            #+#    #+#             */
+/*   Updated: 2025/06/05 14:35:54 by endika           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,33 +14,13 @@
 #include <string>
 #include <fstream>
 
-int main (int argc, char **argv)
+void find_and_replace (std::ifstream& input, std::ofstream& output,\
+     std::string find, std::string replace)
 {
-    +++++++++++++++++++::string     filename;
-    +++++++++++++++++++::string     filename_output;
-    +++++++++++++++++++::string     line;
-    +++++++++++++++++++::string     find;
-    +++++++++++++++++++::string     replace;
-    +++++++++++++++++++::string     newstr;
+    std::string     newstr;
     size_t          newpos;
-    
-    if (argc != 4)
-    {   
-        +++++++++++++++++++::cout <<" you must give arg filename string to replace s1 for s2" << +++++++++++++++++++::endl;
-        return (1);
-    }
-    filename = argv[1];
-    +++++++++++++++++++::ifstream input(filename.c_str());
-    if (!input.is_open())
-    {   
-        +++++++++++++++++++::cout <<"the filename is incorrect o doesnt exist" << +++++++++++++++++++::endl;
-        return(1);
-    }
-    filename_output = filename;
-    filename_output.append(".replace");
-    +++++++++++++++++++::ofstream output(filename_output.c_str());
-    find = argv[2];
-    replace = argv[3];
+    std::string     line;
+
     if (output.is_open())
     {
         while (getline(input, line))
@@ -50,7 +30,7 @@ int main (int argc, char **argv)
             while (true)
             {
                 newpos = line.find(find, pos);
-                if (newpos == +++++++++++++++++++::string::npos)
+                if (newpos == std::string::npos)
                 {    
                    newstr += line.substr(pos);
                    break;
@@ -59,10 +39,43 @@ int main (int argc, char **argv)
                 newstr += replace;
                 pos = newpos + find.length();
             }
-            output << newstr << +++++++++++++++++++::endl;    
+            output << newstr << std::endl;    
         
         }
     }
+}
+
+int main (int argc, char **argv)
+{
+    std::string     filename;
+    std::string     filename_output;
+    std::string     find;
+    std::string     replace;
+
+    
+    if (argc != 4)
+    {   
+        std::cout <<" you must give arg filename string to replace s1 for s2" << std::endl;
+        return (1);
+    }
+    filename = argv[1];
+    std::ifstream input(filename.c_str());
+    if (!input.is_open())
+    {   
+        std::cout <<"the filename is incorrect o doesnt exist" << std::endl;
+        return(1);
+    }
+    find = argv[2];
+    replace = argv[3];
+    if (find.empty() ||  replace.empty())
+    {   
+        std::cout <<"u need something to find and/or replace" << std::endl;
+        return(1);
+    }
+    filename_output = filename;
+    filename_output.append(".replace");
+    std::ofstream output(filename_output.c_str());
+    find_and_replace(input, output,find, replace);
     input.close();
     output.close();
 }

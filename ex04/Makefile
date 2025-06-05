@@ -1,16 +1,16 @@
-CC = g++
-FLAGS = -Werror -Wextra -Wall -std=c++98 -g
+CX = g++
+CXXFLAGS = -Werror -Wextra -Wall -std=c++98 -g
 SRC = main.cpp
-OBJ = $(SRC:.cpp =.o)
+OBJ = $(SRC:.cpp=.o)
 NAME = ex04
 
 all: $(NAME)
 
 $(NAME) : $(OBJ)
-	$(CC) $(FLAGS) $(OBJ) -o $(NAME)
+	$(CXX) $(CXXFLAGS) $(OBJ) -o $(NAME)
 
 %.cpo : %.cpp
-	$(CC) $(FLAGS) -c $< -o $@
+	$(CX) $(FLAGS) -c $< -o $@
 clean:
 	rm -fr $(OBJ)
 fclean: clean
